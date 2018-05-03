@@ -5,13 +5,16 @@
 #define pi 3.141592653
 
 // Light Sensor
-#define LS_FRONT A0
-#define LS_LEFT A1
-#define LS_BACK A2
-#define LS_RIGHT A3
+#define LS_FRONT_LEFT A0
+#define LS_FRONT_RIGHT A1
+#define LS_LEFT A2
+#define LS_BACK A3
+#define LS_RIGHT A4
 
-#define LS_FRONT_G
-#define LS_FRONT_W
+#define LS_FRONT_LEFT_G
+#define LS_FRONT_LEFT_W
+#define LS_FRONT_RIGHT_G
+#define LS_FRONT_RIGHT_W
 #define LS_LEFT_G
 #define LS_LEFT_W
 #define LS_BACK_G
