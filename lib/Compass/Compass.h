@@ -23,7 +23,7 @@
 
 class Compass {
 public:
-  double heading
+  double heading;
   double calibration = COMPASS_CALIBRATION;
 
   Compass () {};
