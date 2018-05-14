@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "motor.h"
 
-void Motor::setup(int enA, int in1, int in2, bool reversed){
+void Motor::Setup(int enA, int in1, int in2, bool reversed){
   enAPin = enA;
   in1Pin = in1;
   in2Pin = in2;
