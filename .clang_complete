@@ -5,6 +5,7 @@
 -IC:\Users\24395\Documents\GitHub\Our-Own-Code\lib\Compass
 -IC:\Users\24395\Documents\GitHub\Our-Own-Code\lib\I2C
 -IC:\Users\24395\Documents\GitHub\Our-Own-Code\lib\define
+-IC:\Users\24395\Documents\GitHub\Our-Own-Code\lib\lightSensor
 -IC:\Users\24395\Documents\GitHub\Our-Own-Code\lib\motor
 -IC:\Users\24395\Documents\GitHub\Our-Own-Code\lib\motorController
 -IC:\Users\24395\.platformio\packages\framework-arduinoavr\libraries\__cores__\arduino\EEPROM\src
