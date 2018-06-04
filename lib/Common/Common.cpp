@@ -1,4 +1,4 @@
-#include "Common.h"
+#include "common.h"
 
 int sign(int value) {
   return value >= 0 ? 1 : -1;
