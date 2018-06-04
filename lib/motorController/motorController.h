@@ -3,7 +3,7 @@
 
 #include "Arduino.h"
 #include <motor.h>
-#include <Common.h>
+#include <common.h>
 
 class MotorController{
 public:
