@@ -40,3 +40,14 @@ void setup(){
     lights.SetThresh(999,999,999,999);
   }
 }
+
+
+void loop(){
+  //ballx = digitalRead(0)
+  //bally = digitalRead(1)
+  //ogoalx = digitalRead(2)
+  //ogoaly = digitalRead(3)
+  //agoalx = digitalRead(4)
+  //agoaly = digitalReaa(5)
+   
+}
