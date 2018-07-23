@@ -22,9 +22,10 @@ unsigned long compMillis = 0;
 int previousHeading = 0;
 const double kp = 4.5;
 const double kd = 9;
+int motorPin1 = 1
 
 void setup(){
-  int motorPin1 = 1
+  pinmode(motorPin1, OUTPUT)
   Serial.begin(9600);
   Wire.begin();
   compass.compassSetup();
