@@ -1,47 +1,54 @@
 #include <Arduino.h>
-#include <common.h>
-#include <compass.h>
-#include <define.h>
-#include <I2C.h>
-#include <lightSensor.h>
-#include <lightSensorArray.h>
-#include <motor.h>
+//#include <common.h>
+//#include <compass.h>
+//#include <define.h>
+//#include <I2C.h>
+//#include <lightSensor.h>
+//#include <lightSensorArray.h>
+//#include <motor.h>
 #include <motorController.h>
 
 //This is where basic documentation will go.
 
-const int GoalAcc = 7;
-const int MoveSpd = 255;
-
-unsigned long previousMillis = 0;
-const long interval = 200;
-bool voiding = false;
-int oldLight = 0;
-
-unsigned long compMillis = 0;
-int previousHeading = 0;
-const double kp = 4.5;
-const double kd = 9;
-
 void setup(){
-  Serial.begin(9600);
-  Wire.begin();
-  compass.compassSetup();
-  compass.calibrate();
-  Motor.setup(1);
-  lights.Setup();
-  lights.GetVal();
-  int robot = 2
-  if(robot==1){
-    lights.SetThresh(35,100,70,140);
-  } else if(robot==2){
-    lights.SetThresh(20,70,60,90);
-  } else{
-    lights.SetThresh(999,999,999,999);
-    //Camera setup goes here
-  }
+  pinMode(motorPin, OUTPUT);
 }
 
-
 void loop(){
-Motor.Move(HIGH, 255)
+  int motorPin = 5;
+  int bxco = 150;
+  int byco = 120;
+  analogWrite(motorPin, 255);
+
+
+
+  if (bxco >= 160){
+    if (bxco <= 240){
+      if (byco < 80){
+      //Ball is at the front
+  }   if (byco <= 160){
+        if (byco >= 80){
+          //Ball is literally on the camera
+  }}  if (byco > 160){
+        //Ball is at the back
+  }}if (bxco > 240){
+  }   if (byco < 80){
+        //Ball is to the front right
+  }   if (byco <= 160){
+        if (byco >= 80){
+          //Ball is on the right
+  }}  if (byco > 160){
+        //Ball is to the back right
+  }if (bxco < 160){
+  }   if (byco < 80){
+        //Ball is to the front left
+  }   if (byco <= 160){
+        if (byco >= 80){
+          Motor.Move(270, 0, 255)
+  }}  if (byco > 160){
+        //Ball is to the back left
+        }
+      }
+  }
+
+}
