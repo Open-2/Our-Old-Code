@@ -11,14 +11,14 @@
 //This is where basic documentation will go.
 
 void setup(){
-  pinMode(motorPin, OUTPUT);
+  //pinMode(motorPin, OUTPUT);
 }
 
 void loop(){
   int motorPin = 5;
   int bxco = 150;
   int byco = 120;
-  analogWrite(motorPin, 255);
+  //analogWrite(motorPin, 255);
 
 
 
@@ -44,11 +44,9 @@ void loop(){
         //Ball is to the front left
   }   if (byco <= 160){
         if (byco >= 80){
-          Motor.Move(270, 0, 255)
+          Motor.Move(270, 0, 255);
   }}  if (byco > 160){
         //Ball is to the back left
         }
       }
-  }
-
 }
