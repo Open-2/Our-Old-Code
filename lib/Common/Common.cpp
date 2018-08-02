@@ -1,4 +1,4 @@
-#include "common.h"
+#include "Common.h"
 
 int sign(int value) {
   return value >= 0 ? 1 : -1;
@@ -33,6 +33,6 @@ double convertRawGyro(int raw) {
   return g;
 }
 
-double degreeToRadians(double degrees) {
+double degreesToRadians(double degrees) {
   return degrees * TO_RADIANS;
 }
