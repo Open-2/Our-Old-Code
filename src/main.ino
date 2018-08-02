@@ -5,20 +5,25 @@
 //#include <I2C.h>
 //#include <lightSensor.h>
 //#include <lightSensorArray.h>
-//#include <motor.h>
-#include <motorController.h>
+#include <Motor.h>
+#include <MotorController.h>
 
 //This is where basic documentation will go.
+MotorController Motor;
+int speed = 255;
 
 void setup(){
-  //pinMode(motorPin, OUTPUT);
+  Motor.Setup();
+
+
 }
 
 void loop(){
-  int motorPin = 5;
   int bxco = 150;
   int byco = 120;
   //analogWrite(motorPin, 255);
+
+
 
 
 
@@ -44,7 +49,7 @@ void loop(){
         //Ball is to the front left
   }   if (byco <= 160){
         if (byco >= 80){
-          Motor.Move(270, 0, 255);
+          Motor.Move(0, 0, speed);
   }}  if (byco > 160){
         //Ball is to the back left
         }

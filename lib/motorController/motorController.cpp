@@ -1,19 +1,12 @@
 #include <Arduino.h>
 #include <define.h>
-#include "motorController.h"
+#include "MotorController.h"
 
-void MotorController::Setup(int robot){
-  if (robot==2){
-    motorBackLeft.Setup(13,12,11,true);
-    motorFrontLeft.Setup(10,9,8,false);
-    motorFrontRight.Setup(7,6,5,true);
-    motorBackRight.Setup(4,3,2,false);
-  }else{
-    motorFrontLeft.Setup(13,12,11,true);
-    motorBackLeft.Setup(10,9,8,false);
-    motorBackRight.Setup(7,6,5,true);
-    motorFrontRight.Setup(4,2,3,false);
-  }
+void MotorController::Setup(){
+    motorFrontLeft.Setup(MOTOR_FRONT_LEFT_ENA,MOTOR_FRONT_LEFT_IN1,MOTOR_FRONT_LEFT_IN2,MOTOR_FRONT_LEFT_REVERSED);
+    motorBackLeft.Setup(MOTOR_BACK_LEFT_ENA,MOTOR_BACK_LEFT_IN1,MOTOR_BACK_LEFT_IN2,MOTOR_BACK_LEFT_REVERSED);
+    motorBackRight.Setup(MOTOR_BACK_RIGHT_ENA,MOTOR_BACK_RIGHT_IN1,MOTOR_BACK_RIGHT_IN2,MOTOR_BACK_RIGHT_REVERSED);
+    motorFrontRight.Setup(MOTOR_FRONT_RIGHT_ENA,MOTOR_FRONT_RIGHT_IN1,MOTOR_FRONT_RIGHT_IN2,MOTOR_FRONT_RIGHT_REVERSED);
 }
 
 void MotorController::Move(int angle, int rotation, int speed){

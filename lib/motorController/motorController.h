@@ -2,8 +2,8 @@
 #define MOTORCONTROLLER_H
 
 #include "Arduino.h"
-#include <motor.h>
-#include <common.h>
+#include <Motor.h>
+#include <Common.h>
 
 class MotorController{
 public:
@@ -12,7 +12,7 @@ public:
   Motor motorFrontRight;
   Motor motorBackLeft;
   Motor motorBackRight;
-  void Setup(int robot);
+  void Setup();
   void Move(int angle, int rotation, int speed);
   void Turn(int speed);
   void Brake();
