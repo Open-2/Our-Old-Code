@@ -24,28 +24,28 @@ void loop(){
   if (bxco >= 160){
     if (bxco <= 240){
       if (byco < 80){
-        //Ball is at the front
+        Motor.Move(0, 0, speed)
 }     if (byco <= 160){
         if (byco >= 80){
-          //Ball is literally on the camera
+          Motor.Move(180, 0, speed)
 }}    if (byco > 160){
-      //Ball is at the back
+        Motor.Move(225, 0, speed)
 }}if (bxco > 240){
 }   if (byco < 80){
-    //Ball is to the front right
+        Motor.Move(90, 0, speed)
 }   if (byco <= 160){
       if (byco >= 80){
-      //Ball is on the right
+        Motor.Move(135, 0, speed)
 }}  if (byco > 160){
-    //Ball is to the back right
+        Motor.Move(180, 0, speed)
 } if (bxco < 160){
 }   if (byco < 80){
-    //Ball is to the front left
+        Motor.Move(270, 0, speed)
 }   if (byco <= 160){
       if (byco >= 80){
-        Motor.Move(180, 0, speed);
+        Motor.Move(225, 0, speed);
 }}  if (byco > 160){
-    //Ball is to the back left
+        Motor.Move(180, 0, speed);
     }
   }
 }
