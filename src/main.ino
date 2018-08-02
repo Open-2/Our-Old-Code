@@ -24,23 +24,23 @@ void loop(){
   if (bxco >= 160){
     if (bxco <= 240){
       if (byco < 80){
-        Motor.Move(0, 0, speed)
+        Motor.Move(0, 0, speed);
 }     if (byco <= 160){
         if (byco >= 80){
-          Motor.Move(180, 0, speed)
+          Motor.Move(180, 0, speed);
 }}    if (byco > 160){
-        Motor.Move(225, 0, speed)
+        Motor.Move(225, 0, speed);
 }}if (bxco > 240){
 }   if (byco < 80){
-        Motor.Move(90, 0, speed)
+        Motor.Move(90, 0, speed);
 }   if (byco <= 160){
       if (byco >= 80){
-        Motor.Move(135, 0, speed)
+        Motor.Move(135, 0, speed);
 }}  if (byco > 160){
-        Motor.Move(180, 0, speed)
+        Motor.Move(180, 0, speed);
 } if (bxco < 160){
 }   if (byco < 80){
-        Motor.Move(270, 0, speed)
+        Motor.Move(270, 0, speed);
 }   if (byco <= 160){
       if (byco >= 80){
         Motor.Move(225, 0, speed);
