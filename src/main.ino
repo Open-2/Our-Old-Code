@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <Common.h>
-//#include <compass.h>
+#include <Compass.h>
 #include <define.h>
-//#include <I2C.h>
+#include <I2C.h>
 //#include <lightSensor.h>
 //#include <lightSensorArray.h>
 #include <Motor.h>
