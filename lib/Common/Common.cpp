@@ -17,7 +17,7 @@ int mod(int x, int m) {
   return r <0 ? r + m : r;
 }
 
-double doublewMod(double value, double maxValue) {
+double doubleMod(double value, double maxValue) {
   return fmod((value +maxValue), maxValue);
 }
 
