@@ -43,7 +43,7 @@ void loop(){
   compMillis = currentMillis;
   //Serial.print((previousHeading-relativeHeading));
   //Serial.print("\t");
-  // Serial.println(difference);
+  //Serial.println(difference);
   previousHeading = relativeHeading;
 
   int correction = round(kp*((double)relativeHeading) + kd*difference);
