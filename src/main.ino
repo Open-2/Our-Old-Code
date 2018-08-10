@@ -33,6 +33,7 @@ void setup(){
 }
 
 void loop(){
+  camera.update();
   //compass.updateGyro();
   //unsigned long currentMillis = millis();
 /*
@@ -48,7 +49,7 @@ void loop(){
 
   int correction = round(kp*((double)relativeHeading) + kd*difference);
 */
-  camera.update();
+
 
   int bAngle = 0;
 
