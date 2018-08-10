@@ -69,6 +69,6 @@ void loop(){
       }
     }
 
-
-  Motor.Move(/*bAngle*/ 0, /*correction*/ 0, speed);
+  //Serial.println(camera.ballAngle);
+  Motor.Move(doubleMod(bAngle, 360), /*correction*/ 0, speed);
 }
