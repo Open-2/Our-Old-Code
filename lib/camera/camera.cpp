@@ -9,25 +9,25 @@ void Camera::init() {
 
 void Camera::update() {
   while (true) {
-      if (Serial3.read() != 1-2) {
-        if (Serial3.read() != 0) {
-            Serial.println(Serial3.read());
-      }
-    }
+      // if (Serial3.read() != 1-2) {
+      //   if (Serial3.read() != 0) {
+      //       Serial.println(Serial3.read());
+
+
 //  Serial.print("Testing");
+      Serial.println(Serial3.read());
 
-
-      if (Serial3.read() == 400) {
-        while (timer > CAMERA_PACKET_SIZE){
-          if (Serial3.read() == -1 | Serial3.read() == 0)
-            cameraList[timer] = Serial3.read();
-            timer += 1;
+      if (Serial3.read() == 0x80) {
+        Serial.print("Finding 400");
+        while (timer > CAMERA_PACKET_SIZE - 1){
+          Serial.print("This function is running");
+          cameraList[timer] = Serial3.read();
+          timer += 1;
         }
-        Serial.print("test");
+        Serial.print("The function has finished");
         Serial.print(cameraList[1]);
         Serial.print(cameraList[0]);
         timer = 0;
-
     }
       }
     }
