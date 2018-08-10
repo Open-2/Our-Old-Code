@@ -2,7 +2,7 @@
 
 int incomingByte = 0;
 int timer = 0;
-int cameraList [3] = { 0, 0, 0 };
+int cameraList [2] = { 0, 0};
 void Camera::init() {
   Serial3.begin(9600);
 }
@@ -15,22 +15,26 @@ void Camera::update() {
 
 
 //  Serial.print("Testing");
-      Serial.println(Serial3.read());
 
       if (Serial3.read() == 0x80) {
-        Serial.print("Finding 400");
-        while (timer > CAMERA_PACKET_SIZE - 1){
-          Serial.print("This function is running");
+        // Serial.print("This function is running.\n");
+        while (timer < CAMERA_PACKET_SIZE){
+
+
+
           cameraList[timer] = Serial3.read();
           timer += 1;
         }
-        Serial.print("The function has finished");
-        Serial.print(cameraList[1]);
-        Serial.print(cameraList[0]);
+
+        // Serial.print("The function has finished\n");
+        //Serial.print(cameraList[0]);
         timer = 0;
+        ballAngle = cameraList[0];
+        Serial.print(cameraList[0]);
     }
       }
     }
+
 
 
   //

@@ -33,25 +33,9 @@ void setup(){
 }
 
 void loop(){
-  camera.update();
-  //compass.updateGyro();
-  //unsigned long currentMillis = millis();
-/*
-  int relativeHeading = compass.heading > 180 ? (360 - compass.heading) : -compass.heading;
-
-  double diffTime = ((double)(currentMillis - compMillis))/100.0;
-  double difference = ((double)(relativeHeading - previousHeading)) / diffTime;
-  compMillis = currentMillis;
-  //Serial.print((previousHeading-relativeHeading));
-  //Serial.print("\t");
-  //Serial.println(difference);
-  previousHeading = relativeHeading;
-
-  int correction = round(kp*((double)relativeHeading) + kd*difference);
-*/
-
-
   int bAngle = 0;
+  camera.update();
+
 
   //Motor.motorFrontRight.Move(255);
 
@@ -70,6 +54,24 @@ void loop(){
       }
     }
 
+    Motor.Move(doubleMod(bAngle, 360), /*correction*/ 0, speed);
+  //compass.updateGyro();
+  //unsigned long currentMillis = millis();
+/*
+  int relativeHeading = compass.heading > 180 ? (360 - compass.heading) : -compass.heading;
+
+  double diffTime = ((double)(currentMillis - compMillis))/100.0;
+  double difference = ((double)(relativeHeading - previousHeading)) / diffTime;
+  compMillis = currentMillis;
+  //Serial.print((previousHeading-relativeHeading));
+  //Serial.print("\t");
+  //Serial.println(difference);
+  previousHeading = relativeHeading;
+
+  int correction = round(kp*((double)relativeHeading) + kd*difference);
+*/
+
+
+
   //Serial.println(camera.ballAngle);
-  Motor.Move(doubleMod(bAngle, 360), /*correction*/ 0, speed);
 }
