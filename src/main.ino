@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include <Common.h>
-#include <Compass.h>
+//#include <Compass.h>
 #include <define.h>
 #include <I2C.h>
 //#include <lightSensor.h>
@@ -11,7 +11,7 @@
 
 //This is where basic documentation will go.
 MotorController Motor;
-Compass compass;
+//Compass compass;
 Camera camera;
 
 const int GoalAcc = 7;
@@ -27,15 +27,15 @@ void setup(){
   Serial.begin(9600);
   Motor.Setup();
   Wire.begin();
-  compass.compassSetup();
-  compass.calibrate();
+  //compass.compassSetup();
+  //compass.calibrate();
   camera.init();
 }
 
 void loop(){
-  compass.updateGyro();
-  unsigned long currentMillis = millis();
-
+  //compass.updateGyro();
+  //unsigned long currentMillis = millis();
+/*
   int relativeHeading = compass.heading > 180 ? (360 - compass.heading) : -compass.heading;
 
   double diffTime = ((double)(currentMillis - compMillis))/100.0;
@@ -47,20 +47,28 @@ void loop(){
   previousHeading = relativeHeading;
 
   int correction = round(kp*((double)relativeHeading) + kd*difference);
-
+*/
   camera.update();
 
-  int moveAngle = 0;
+  int bAngle = 0;
+
+  //Motor.motorFrontRight.Move(255);
+
 
   if (camera.ballAngle > 350 || camera.ballAngle < 10) {
-    moveAngle = 0;
+    bAngle = 0;
   } else {
-    if (camera.ballAngle < 180) {
-      moveAngle = camera.ballAngle + 90;
-    } else {
-      moveAngle = camera.ballAngle - 90;
+    if (camera.ballAngle < 60) {
+      bAngle = 90;
+    } else  {
+      if (camera.ballAngle < 240) {
+        bAngle = 180;
+      } else  {
+        bAngle = 270;
+        }
+      }
     }
-  }
 
-  Motor.Move(doubleMod(moveAngle, 360), correction, speed);
+
+  Motor.Move(/*bAngle*/ 0, /*correction*/ 0, speed);
 }

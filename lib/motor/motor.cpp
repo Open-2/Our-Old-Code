@@ -12,33 +12,33 @@ void Motor::Setup(int enA, int in1, int in2, bool reversed){
 }
 
 void Motor::Move(int speed){
-	if(reversedDirection){
-		if(speed > 0){
-			digitalWrite(in1Pin, HIGH);
-			digitalWrite(in2Pin, LOW);
-			analogWrite(enAPin, abs(speed));
-		} else if(speed < 0){
-			digitalWrite(in1Pin, LOW);
-			digitalWrite(in2Pin, HIGH);
-			analogWrite(enAPin, abs(speed));
+	 if(reversedDirection){
+  		if(speed > 0){
+  			digitalWrite(in1Pin, HIGH);
+  			digitalWrite(in2Pin, LOW);
+  			analogWrite(enAPin, abs(speed));
+  	} else if(speed < 0){
+  			digitalWrite(in1Pin, LOW);
+  			digitalWrite(in2Pin, HIGH);
+  			analogWrite(enAPin, abs(speed));
     } else {
-			digitalWrite(in1Pin, LOW);
-			digitalWrite(in2Pin, LOW);
-			analogWrite(enAPin, 255);
-		}
+  			digitalWrite(in1Pin, LOW);
+  			digitalWrite(in2Pin, LOW);
+  			analogWrite(enAPin, 255);
+  		}
 	}else{
-    if(speed > 0){
-			digitalWrite(in1Pin, LOW);
-			digitalWrite(in2Pin, HIGH);
-			analogWrite(enAPin, abs(speed));
-		} else if(speed < 0){
-			digitalWrite(in1Pin, HIGH);
-			digitalWrite(in2Pin, LOW);
-			analogWrite(enAPin, abs(speed));
-	  } else {
-			digitalWrite(in1Pin, LOW);
-			digitalWrite(in2Pin, LOW);
-			analogWrite(enAPin, 255);
+      if(speed > 0){
+  			digitalWrite(in1Pin, LOW);
+  			digitalWrite(in2Pin, HIGH);
+  			analogWrite(enAPin, abs(speed));
+  	 }else if(speed < 0){
+  			digitalWrite(in1Pin, HIGH);
+  			digitalWrite(in2Pin, LOW);
+  			analogWrite(enAPin, abs(speed));
+  	 }else {
+  			digitalWrite(in1Pin, LOW);
+  			digitalWrite(in2Pin, LOW);
+  			analogWrite(enAPin, 255);
 		}
 	}
 }

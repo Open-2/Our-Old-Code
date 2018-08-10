@@ -40,13 +40,13 @@ void MotorController::Move(int angle, int rotation, int speed){
       motorFrontLeft.Move(weights[3]);
       motorBackRight.Move(weights[0]);
       motorBackLeft.Move(weights[2]);
-      // Serial.print(weights[1]);
-      // Serial.print("\t");
-      // Serial.print(-weights[3]);
-      // Serial.print("\t");
-      // Serial.print(weights[0]);
-      // Serial.print("\t");
-      // Serial.println(weights[2]);
+      //Serial.print(weights[1]);
+      //Serial.print("\t");
+      //Serial.print(-weights[3]);
+      //Serial.print("\t");
+      //Serial.print(weights[0]);
+      //Serial.print("\t");
+      //Serial.println(weights[2]);
     }
   else{
     rotation = constrain(rotation, -255, 255);
