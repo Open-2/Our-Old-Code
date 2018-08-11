@@ -18,22 +18,18 @@ void Camera::update() {
 //  Serial.print("Testing");
 
     if (Serial3.read() == 255) {
+      if (Serial3.available() >= 4) {
       bangle1 = Serial3.read();
       bangle2 = Serial3.read();
-      if (bangle1 != -1 && bangle2 != -1) {
-        ballAngle = bangle1 + bangle2;
-            }
-    if (Serial2.read() == 255) {
-      gangle1 = Serial2.read();
-      gangle2 = Serial2.read();
-      if (gangle1 != -1 && gangle2 != -1) {
-        goalAngle = gangle1 + gangle2;
-      }
-    }
-
+      ballAngle = bangle1 + bangle2;
+      gangle1 = Serial3.read();
+      gangle2 = Serial3.read();
+      goalAngle = gangle1 + gangle2;
 
     }
+  }
 }
+
 
 
 
