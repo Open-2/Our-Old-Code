@@ -22,6 +22,7 @@ unsigned long previousMillis = 0;
 unsigned long compMillis = 0;
 int previousHeading = 0;
 int bAngle = 0;
+int goalAngle = 0;
 
 
 void setup(){
@@ -34,11 +35,23 @@ void setup(){
 }
 
 void loop(){
-
   //compass.updateGyro();
+
+  if (camera.bGoalAngle != -2 || camera.yGoalAngle != 2)  {
+    if (camera.bGoalAngle != -2) {
+      goalAngle = camera.bGoalAngle;
+    } else {
+      goalAngle = ((camera.yGoalAngle + 180)%360);
+    }
+  } else {
+    goalAngle = 0;
+  }
+
+
+
   unsigned long currentMillis = millis();
 
-  int relativeHeading = camera.goalAngle > 180 ? (360 - camera.goalAngle) : camera.goalAngle;
+  int relativeHeading = goalAngle > 180 ? (360 - goalAngle) : goalAngle;
 
   double diffTime = ((double)(currentMillis - compMillis))/100.0;
   double difference = ((double)(relativeHeading - previousHeading)) / diffTime;
@@ -51,24 +64,24 @@ void loop(){
   int correction = round(kp*((double)relativeHeading) + kd*difference);
 
 
-    camera.update();
-    Serial.println(camera.ballAngle);
+  camera.update();
+  Serial.println(camera.ballAngle);
 
 
 
 
-     if (camera.ballAngle > 350 || camera.ballAngle < 10) {
-       bAngle = 0;
-     } else {
-     if (camera.ballAngle < 70) {
-       bAngle = 90;
-     } else {
-     if (camera.ballAngle < 290) {
-       bAngle = 180;
-     } else {
-       bAngle = 270;
-        }
-       }
-     }
-     Motor.Move(bAngle, correction, 255);
- }
+  if (camera.ballAngle > 350 || camera.ballAngle < 10) {
+    bAngle = 0;
+  } else {
+    if (camera.ballAngle < 70) {
+      bAngle = 90;
+    } else {
+      if (camera.ballAngle < 290) {
+        bAngle = 180;
+      } else {
+        bAngle = 270;
+      }
+    }
+  }
+  Motor.Move(bAngle, correction, 255);
+}

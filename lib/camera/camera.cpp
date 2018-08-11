@@ -2,8 +2,10 @@
 
 int bangle1 = 0;
 int bangle2 = 0;
-int gangle1 = 0;
-int gangle2 = 0;
+int yangle1 = 0;
+int yangle2 = 0;
+int blangle1 = 0;
+int blangle2 = 0;
 void Camera::init() {
   Serial3.begin(9600);
 }
@@ -19,12 +21,15 @@ void Camera::update() {
 
     if (Serial3.read() == 255) {
       if (Serial3.available() >= 4) {
-      bangle1 = Serial3.read();
-      bangle2 = Serial3.read();
-      ballAngle = bangle1 + bangle2;
-      gangle1 = Serial3.read();
-      gangle2 = Serial3.read();
-      goalAngle = gangle1 + gangle2;
+        bangle1 = Serial3.read();
+        bangle2 = Serial3.read();
+        yangle1 = Serial3.read();
+        yangle2 = Serial3.read();
+        blangle1 = Serial3.read();
+        blangle2 = Serial3.read();
+        ballAngle = bangle1 + bangle2;
+        yGoalAngle = yangle1 + yangle2;
+        bGoalAngle = bangle1 + bangle2;
 
     }
   }

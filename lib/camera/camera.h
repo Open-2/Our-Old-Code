@@ -9,7 +9,8 @@ public:
   void init();
   void update();
   int ballAngle = 0;
-  int goalAngle = 0;
+  int bGoalAngle = 0;
+  int yGoalAngle = 0;
 };
 
 #endif
