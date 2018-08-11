@@ -52,24 +52,23 @@ void loop(){
 
     // Motor.Move(bAngle, /*correction*/ 0, 255);
     camera.update();
-    Motor.Move(270, 0, 255);
+    Serial.println(camera.ballAngle);
 
 
 
 
-
-    //Motor.motorFrontRight.Move(255);
-    // if (camera.ballAngle > 170 && camera.ballAngle < 190) {
-    //   bAngle = 0;
-    // } else {
-    // if (camera.ballAngle < 260 && camera.ballAngle >= 190) {
-    //   bAngle = 90;
-    // } else {
-    // if (camera.ballAngle < 170 && camera.ballAngle > 100) {
-    //   bAngle = 270;
-    // } else {
-    //   bAngle = 180;
+     if (camera.ballAngle > 350 || camera.ballAngle < 10) {
+       bAngle = 0;
+     } else {
+     if (camera.ballAngle < 70) {
+       bAngle = 90;
+     } else {
+     if (camera.ballAngle < 290) {
+       bAngle = 180;
+     } else {
+       bAngle = 270;
         }
-//       }
-//     }
-// }
+       }
+     }
+     Motor.Move(bAngle, 0, 255);
+ }

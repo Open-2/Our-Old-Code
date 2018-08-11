@@ -36,14 +36,14 @@ void MotorController::Move(int angle, int rotation, int speed){
     for(int i = 0; i < 4; i++){
       weights[i] = round(weights[i]*changeFactor);
     }
-      Serial.print("Weights 0 = ");
-      Serial.print(weights[0]);
-      Serial.print("Weights 1 = ");
-      Serial.print(weights[1]);
-      Serial.print("Weights 2 = ");
-      Serial.print(weights[2]);
-      Serial.print("Weights 3 = ");
-      Serial.print(weights[3]);
+      // Serial.print("Weights 0 = ");
+      // Serial.print(weights[0]);
+      // Serial.print("Weights 1 = ");
+      // Serial.print(weights[1]);
+      // Serial.print("Weights 2 = ");
+      // Serial.print(weights[2]);
+      // Serial.print("Weights 3 = ");
+      // Serial.print(weights[3]);
       motorFrontRight.Move(weights[1]);
       motorFrontLeft.Move(weights[3]);
       motorBackRight.Move(weights[0]);

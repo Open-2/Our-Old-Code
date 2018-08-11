@@ -1,5 +1,7 @@
 #include "camera.h"
 
+int bangle1 = 0;
+int bangle2 = 0;
 void Camera::init() {
   Serial3.begin(9600);
 }
@@ -14,13 +16,14 @@ void Camera::update() {
 //  Serial.print("Testing");
 
     if (Serial3.read() == 255) {
-      ballAngle = Serial3.read() + Serial3.read();
-    }
-    if (Serial2.read() == 255){
-      goalAngle = Serial2.read() + Serial2.read();
-  }
-}
+      bangle1 = Serial3.read();
+      bangle2 = Serial3.read();
+      if (bangle1 != -1 && bangle2 != -1)
+        ballAngle = bangle1 + bangle2;
 
+
+    }
+}
 
 
 
