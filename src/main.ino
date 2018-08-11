@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include <Common.h>
-#include <Compass.h>
+//#include <Compass.h>
 #include <define.h>
 #include <I2C.h>
 //#include <lightSensor.h>
@@ -11,7 +11,7 @@
 
 //This is where basic documentation will go.
 MotorController Motor;
-Compass compass;
+//Compass compass;
 Camera camera;
 
 const int GoalAcc = 7;
@@ -28,44 +28,48 @@ void setup(){
   Serial.begin(9600);
   Motor.Setup();
   Wire.begin();
-  compass.compassSetup();
-  compass.calibrate();
+  // compass.compassSetup();
+  // compass.calibrate();
   camera.init();
 }
 
 void loop(){
 
-  compass.updateGyro();
-  unsigned long currentMillis = millis();
+  // compass.updateGyro();
+  // unsigned long currentMillis = millis();
+  //
+  // int relativeHeading = camera.goalAngle > 180 ? (360 - camera.goalAngle) : camera.goalAngle;
+  //
+  // double diffTime = ((double)(currentMillis - compMillis))/100.0;
+  // double difference = ((double)(relativeHeading - previousHeading)) / diffTime;
+  // compMillis = currentMillis;
+  // //Serial.print((previousHeading-relativeHeading));
+  // //Serial.print("\t");
+  // //Serial.println(difference);
+  // previousHeading = relativeHeading;
+  //
+  // int correction = round(kp*((double)relativeHeading) + kd*difference);
 
-  int relativeHeading = camera.goalAngle > 180 ? (360 - camera.goalAngle) : camera.goalAngle;
-
-  double diffTime = ((double)(currentMillis - compMillis))/100.0;
-  double difference = ((double)(relativeHeading - previousHeading)) / diffTime;
-  compMillis = currentMillis;
-  //Serial.print((previousHeading-relativeHeading));
-  //Serial.print("\t");
-  //Serial.println(difference);
-  previousHeading = relativeHeading;
-
-  int correction = round(kp*((double)relativeHeading) + kd*difference);
-
-    Motor.Move(bAngle, /*correction*/ 0, 255);
+    // Motor.Move(bAngle, /*correction*/ 0, 255);
     camera.update();
+    Motor.Move(270, 0, 255);
+
+
+
 
 
     //Motor.motorFrontRight.Move(255);
-    if (camera.ballAngle > 170 && camera.ballAngle < 190) {
-      bAngle = 0;
-    } else {
-    if (camera.ballAngle < 260 && camera.ballAngle >= 190) {
-      bAngle = 90;
-    } else {
-    if (camera.ballAngle < 170 && camera.ballAngle > 100) {
-      bAngle = 270;
-    } else {
-      bAngle = 180;
+    // if (camera.ballAngle > 170 && camera.ballAngle < 190) {
+    //   bAngle = 0;
+    // } else {
+    // if (camera.ballAngle < 260 && camera.ballAngle >= 190) {
+    //   bAngle = 90;
+    // } else {
+    // if (camera.ballAngle < 170 && camera.ballAngle > 100) {
+    //   bAngle = 270;
+    // } else {
+    //   bAngle = 180;
         }
-      }
-    }
-}
+//       }
+//     }
+// }
