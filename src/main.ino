@@ -35,22 +35,22 @@ void setup(){
 
 void loop(){
 
-  // compass.updateGyro();
-  // unsigned long currentMillis = millis();
-  //
-  // int relativeHeading = camera.goalAngle > 180 ? (360 - camera.goalAngle) : camera.goalAngle;
-  //
-  // double diffTime = ((double)(currentMillis - compMillis))/100.0;
-  // double difference = ((double)(relativeHeading - previousHeading)) / diffTime;
-  // compMillis = currentMillis;
-  // //Serial.print((previousHeading-relativeHeading));
-  // //Serial.print("\t");
-  // //Serial.println(difference);
-  // previousHeading = relativeHeading;
-  //
-  // int correction = round(kp*((double)relativeHeading) + kd*difference);
+  //compass.updateGyro();
+  unsigned long currentMillis = millis();
 
-    // Motor.Move(bAngle, /*correction*/ 0, 255);
+  int relativeHeading = camera.goalAngle > 180 ? (360 - camera.goalAngle) : camera.goalAngle;
+
+  double diffTime = ((double)(currentMillis - compMillis))/100.0;
+  double difference = ((double)(relativeHeading - previousHeading)) / diffTime;
+  compMillis = currentMillis;
+  //Serial.print((previousHeading-relativeHeading));
+  //Serial.print("\t");
+  //Serial.println(difference);
+  previousHeading = relativeHeading;
+
+  int correction = round(kp*((double)relativeHeading) + kd*difference);
+
+
     camera.update();
     Serial.println(camera.ballAngle);
 
@@ -70,5 +70,5 @@ void loop(){
         }
        }
      }
-     Motor.Move(bAngle, 0, 255);
+     Motor.Move(bAngle, correction, 255);
  }

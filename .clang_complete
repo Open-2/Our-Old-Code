@@ -1,13 +1,13 @@
 -IC:\Users\22451\.platformio\packages\framework-arduinoavr\cores\arduino
 -IC:\Users\22451\.platformio\packages\framework-arduinoavr\variants\mega
 -IC:\Users\22451\Documents\GitHub\Our-Own-Code\lib\Common
--IC:\Users\22451\Documents\GitHub\Our-Own-Code\lib\Compass
 -IC:\Users\22451\Documents\GitHub\Our-Own-Code\lib\I2C
 -IC:\Users\22451\Documents\GitHub\Our-Own-Code\lib\camera
 -IC:\Users\22451\Documents\GitHub\Our-Own-Code\lib\define
 -IC:\Users\22451\Documents\GitHub\Our-Own-Code\lib\motor
 -IC:\Users\22451\Documents\GitHub\Our-Own-Code\lib\motorController
 -IC:\Users\22451\.platformio\packages\framework-arduinoavr\libraries\__cores__\arduino\Wire\src
+-IC:\Users\22451\Documents\GitHub\Our-Own-Code\lib\Compass
 -IC:\Users\22451\Documents\GitHub\Our-Own-Code\lib\lightSensor
 -IC:\Users\22451\Documents\GitHub\Our-Own-Code\lib\lightSensorArray
 -IC:\Users\22451\.platformio\packages\framework-arduinoavr\libraries\__cores__\arduino\EEPROM\src
