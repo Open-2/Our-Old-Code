@@ -15,10 +15,12 @@ void Camera::update() {
 
     if (Serial3.read() == 255) {
       ballAngle = Serial3.read() + Serial3.read();
-
-
     }
+    if (Serial2.read() == 255){
+      goalAngle = Serial2.read() + Serial2.read();
+  }
 }
+
 
 
 
