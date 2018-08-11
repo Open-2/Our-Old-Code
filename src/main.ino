@@ -38,7 +38,7 @@ void loop(){
   compass.updateGyro();
   unsigned long currentMillis = millis();
 
-  int relativeHeading = compass.heading > 180 ? (360 - compass.heading) : -compass.heading;
+  int relativeHeading = camera.goalAngle > 180 ? (360 - camera.goalAngle) : camera.goalAngle;
 
   double diffTime = ((double)(currentMillis - compMillis))/100.0;
   double difference = ((double)(relativeHeading - previousHeading)) / diffTime;
@@ -52,7 +52,6 @@ void loop(){
 
     Motor.Move(bAngle, /*correction*/ 0, 255);
     camera.update();
-    Serial.println(camera.ballAngle);
 
 
     //Motor.motorFrontRight.Move(255);
@@ -69,12 +68,4 @@ void loop(){
         }
       }
     }
-
-
-
-
-//
-//
-//
-//   //Serial.println(camera.ballAngle);
 }
