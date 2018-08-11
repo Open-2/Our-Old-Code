@@ -13,11 +13,12 @@ void Camera::update() {
 
 //  Serial.print("Testing");
 
-      if (Serial3.read() == 0x80) {
-          ballAngle = Serial3.read();
+    if (Serial3.read() == 255) {
+      ballAngle = Serial3.read() + Serial3.read();
 
-        }
+
     }
+}
 
 
 

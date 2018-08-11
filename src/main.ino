@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include <Common.h>
-//#include <Compass.h>
+#include <Compass.h>
 #include <define.h>
 #include <I2C.h>
 //#include <lightSensor.h>
@@ -11,7 +11,7 @@
 
 //This is where basic documentation will go.
 MotorController Motor;
-//Compass compass;
+Compass compass;
 Camera camera;
 
 const int GoalAcc = 7;
@@ -28,40 +28,16 @@ void setup(){
   Serial.begin(9600);
   Motor.Setup();
   Wire.begin();
-  //compass.compassSetup();
-  //compass.calibrate();
+  compass.compassSetup();
+  compass.calibrate();
   camera.init();
 }
 
 void loop(){
 
-  Motor.Move(bAngle, /*correction*/ 0, 255);
-  camera.update();
+  compass.updateGyro();
+  unsigned long currentMillis = millis();
 
-
-  //Motor.motorFrontRight.Move(255);
-  if (camera.ballAngle > 170 && camera.ballAngle < 190) {
-    bAngle = 0;
-    Serial.print("Forward");
-  } else {
-  if (camera.ballAngle < 250 && camera.ballAngle >= 190) {
-    bAngle = 90;
-    Serial.print("Right");
-  } else {
-  if (camera.ballAngle < 170 && camera.ballAngle > 110) {
-    bAngle = 270;
-    Serial.print("Left");
-  } else {
-    bAngle = 180;
-    Serial.print("Backwards");
-      }
-    }
-  }
-
-
-  //compass.updateGyro();
-  //unsigned long currentMillis = millis();
-/*
   int relativeHeading = compass.heading > 180 ? (360 - compass.heading) : -compass.heading;
 
   double diffTime = ((double)(currentMillis - compMillis))/100.0;
@@ -73,9 +49,32 @@ void loop(){
   previousHeading = relativeHeading;
 
   int correction = round(kp*((double)relativeHeading) + kd*difference);
-*/
+
+    Motor.Move(bAngle, /*correction*/ 0, 255);
+    camera.update();
+    Serial.println(camera.ballAngle);
+
+
+    //Motor.motorFrontRight.Move(255);
+    if (camera.ballAngle > 170 && camera.ballAngle < 190) {
+      bAngle = 0;
+    } else {
+    if (camera.ballAngle < 260 && camera.ballAngle >= 190) {
+      bAngle = 90;
+    } else {
+    if (camera.ballAngle < 170 && camera.ballAngle > 100) {
+      bAngle = 270;
+    } else {
+      bAngle = 180;
+        }
+      }
+    }
 
 
 
-  //Serial.println(camera.ballAngle);
+
+//
+//
+//
+//   //Serial.println(camera.ballAngle);
 }
