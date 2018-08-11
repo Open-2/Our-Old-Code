@@ -1,14 +1,11 @@
 #include "camera.h"
 
-int incomingByte = 0;
-int timer = 0;
-int cameraList [2] = { 0, 0};
 void Camera::init() {
   Serial3.begin(9600);
 }
 
 void Camera::update() {
-  while (true) {
+
       // if (Serial3.read() != 1-2) {
       //   if (Serial3.read() != 0) {
       //       Serial.println(Serial3.read());
@@ -17,23 +14,12 @@ void Camera::update() {
 //  Serial.print("Testing");
 
       if (Serial3.read() == 0x80) {
-        // Serial.print("This function is running.\n");
-        while (timer < CAMERA_PACKET_SIZE){
+          ballAngle = Serial3.read();
 
-
-
-          cameraList[timer] = Serial3.read();
-          timer += 1;
         }
+    }
 
-        // Serial.print("The function has finished\n");
-        //Serial.print(cameraList[0]);
-        timer = 0;
-        ballAngle = cameraList[0];
-        Serial.print(cameraList[0]);
-    }
-      }
-    }
+
 
 
 

@@ -21,6 +21,7 @@ const double kd = 9;
 unsigned long previousMillis = 0;
 unsigned long compMillis = 0;
 int previousHeading = 0;
+int bAngle = 0;
 
 
 void setup(){
@@ -33,28 +34,31 @@ void setup(){
 }
 
 void loop(){
-  int bAngle = 0;
+
+  Motor.Move(bAngle, /*correction*/ 0, 255);
   camera.update();
 
 
   //Motor.motorFrontRight.Move(255);
-
-
-  if (camera.ballAngle > 350 || camera.ballAngle < 10) {
+  if (camera.ballAngle > 170 && camera.ballAngle < 190) {
     bAngle = 0;
+    Serial.print("Forward");
   } else {
-    if (camera.ballAngle < 60) {
-      bAngle = 90;
-    } else  {
-      if (camera.ballAngle < 240) {
-        bAngle = 180;
-      } else  {
-        bAngle = 270;
-        }
+  if (camera.ballAngle < 250 && camera.ballAngle >= 190) {
+    bAngle = 90;
+    Serial.print("Right");
+  } else {
+  if (camera.ballAngle < 170 && camera.ballAngle > 110) {
+    bAngle = 270;
+    Serial.print("Left");
+  } else {
+    bAngle = 180;
+    Serial.print("Backwards");
       }
     }
+  }
 
-    Motor.Move(doubleMod(bAngle, 360), /*correction*/ 0, speed);
+
   //compass.updateGyro();
   //unsigned long currentMillis = millis();
 /*

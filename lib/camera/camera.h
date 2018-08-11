@@ -8,10 +8,7 @@ class Camera {
 public:
   void init();
   void update();
-
-  bool ballVisible;
   int ballAngle = 0;
-  int ballDistance = 0;
 };
 
 #endif
