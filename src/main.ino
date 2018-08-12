@@ -45,33 +45,33 @@ void loop(){
   } else {
     goalAngle = 0;
   }
-
-  if (goalAngle > 10 && goalAngle < 180) {
-    Motor.weights[0] += 10;
-
-  }  else {
-    if (goalAngle < 350 && goalAngle > 180){
-      Motor.weights[2] += -10;
-    }
-  }
-
-  // unsigned long currentMillis = millis();
   //
-  // int relativeHeading = goalAngle > 180 ? (360 - goalAngle) : goalAngle;
+  // if (goalAngle > 10 && goalAngle < 180) {
+  //   Motor.weights[0] += 30;
   //
-  // double diffTime = ((double)(currentMillis - compMillis))/100.0;
-  // double difference = ((double)(relativeHeading - previousHeading)) / diffTime;
-  // compMillis = currentMillis;
-  // //Serial.print((previousHeading-relativeHeading));
-  // //Serial.print("\t");
-  // //Serial.println(difference);
-  // previousHeading = relativeHeading;
-  //
-  // int correction = round(kp*((double)relativeHeading) + kd*difference);
+  // }  else {
+  //   if (goalAngle < 350 && goalAngle > 180){
+// }
+  //     Motor.weights[2] += -30;
+    // }
+
+  unsigned long currentMillis = millis();
+
+  int relativeHeading = goalAngle > 180 ? (360 - goalAngle) : goalAngle;
+
+  double diffTime = ((double)(currentMillis - compMillis))/100.0;
+  double difference = ((double)(relativeHeading - previousHeading)) / diffTime;
+  compMillis = currentMillis;
+  //Serial.print((previousHeading-relativeHeading));
+  //Serial.print("\t");
+  //Serial.println(difference);
+  previousHeading = relativeHeading;
+
+  int correction = round(kp*((double)relativeHeading) + kd*difference);
 
   camera.update();
 
-  if (camera.ballAngle > 350 || camera.ballAngle < 10) {
+  if (camera.ballAngle > 340 || camera.ballAngle < 20) {
     bAngle = 180;
     } else {
       if (camera.ballAngle < 80) {
@@ -86,5 +86,5 @@ void loop(){
   }
 
 
-  Motor.Move(bAngle, 0, 50);
+  Motor.Move(bAngle, correction, 150);
     }
