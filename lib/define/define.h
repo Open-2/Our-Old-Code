@@ -58,6 +58,6 @@
 #define MOTOR_FRONT_RIGHT_IN2 5
 #define MOTOR_FRONT_RIGHT_REVERSED false
 
-#define CAMERA_PACKET_SIZE 2
+#define CAMERA_PACKET_SIZE 7
 
 #endif
