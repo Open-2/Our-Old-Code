@@ -34,23 +34,27 @@ void setup(){
 }
 
 void loop(){
-  camera.update();
-  Serial.print(camera.ballAngle);
+
+
+  //compass.updateGyro();
+
+  if (camera.bGoalAngle != -2 || camera.yGoalAngle != 2)  {
+    if (camera.bGoalAngle != -2) {
+      goalAngle = camera.bGoalAngle;
+    }
+  } else {
+    goalAngle = 0;
   }
 
-  // //compass.updateGyro();
-  //
-  // if (camera.bGoalAngle != -2 || camera.yGoalAngle != 2)  {
-  //   if (camera.bGoalAngle != -2) {
-  //     goalAngle = camera.bGoalAngle;
-  //   } else {
-  //   }
-  // } else {
-  //   goalAngle = 0;
-  // }
-  //
-  //
-  //
+  if (goalAngle > 10 && goalAngle < 180) {
+    Motor.weights[0] += 10;
+
+  }  else {
+    if (goalAngle < 350 && goalAngle > 180){
+      Motor.weights[2] += -10;
+    }
+  }
+
   // unsigned long currentMillis = millis();
   //
   // int relativeHeading = goalAngle > 180 ? (360 - goalAngle) : goalAngle;
@@ -64,28 +68,23 @@ void loop(){
   // previousHeading = relativeHeading;
   //
   // int correction = round(kp*((double)relativeHeading) + kd*difference);
-  //
-  //
-  // camera.update();
-  // Serial.println(Serial3.read());
-  //
-  // if (camera.ballAngle > 350 || camera.ballAngle < 10) {
-  //   bAngle = 0;
-  //   } else {
-  //     if (camera.ballAngle < 80) {
-  //       bAngle = 90;
-  //     } else {
-  //       if (camera.ballAngle < 290) {
-  //         bAngle = 180;
-  //       } else {
-  //         bAngle = 270;
-  //     }
-  //   }
-  // }
-  //
-  // if (goalAngle == -2) {
-  //   correction = 0;
-  //
-  // }
-  // Motor.Move(bAngle, correction, 100);
-  //   }
+
+  camera.update();
+
+  if (camera.ballAngle > 350 || camera.ballAngle < 10) {
+    bAngle = 180;
+    } else {
+      if (camera.ballAngle < 80) {
+        bAngle = 90;
+      } else {
+        if (camera.ballAngle < 290) {
+          bAngle = 0;
+        } else {
+          bAngle = 270;
+      }
+    }
+  }
+
+
+  Motor.Move(bAngle, 0, 50);
+    }

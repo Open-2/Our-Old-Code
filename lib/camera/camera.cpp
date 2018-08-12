@@ -17,19 +17,19 @@ void Camera::update() {
       //       Serial.println(Serial3.read());
 
 
-//  Serial.print("Testing");
+ // Serial.print("Testing");
 
-    if (Serial3.read() == 254) {
       if (Serial3.available() >= 6) {
-        Serial.print(Serial3.read());
-        bangle2 = Serial3.read();
-        yangle1 = Serial3.read();
-        yangle2 = Serial3.read();
-        blangle1 = Serial3.read();
-        blangle2 = Serial3.read();
-        ballAngle = bangle1 + bangle2;
-        yGoalAngle = yangle1 + yangle2;
-        bGoalAngle = blangle1 + blangle2;
+          if (Serial3.read() == 254) {
+            bangle1 = Serial3.read();
+            bangle2 = Serial3.read();
+            blangle1 = Serial3.read();
+            blangle2 = Serial3.read();
+            yangle1 = Serial3.read();
+            yangle2 = Serial3.read();
+            ballAngle = bangle1 + bangle2;
+            yGoalAngle = yangle1 + yangle2;
+            bGoalAngle = blangle1 + blangle2;
 
     }
   }
